@@ -16,4 +16,14 @@ public class MockitoDocumentationTest {
 		MockitoDocumentation.stubbing();
 	}
 	
+	@Test
+	public void doTestArgumentMatchers(){
+		MockitoDocumentation.argumentMatchers();
+	}
+	
+	@Test
+	public void doTestVerifySomeBehaviourTimes(){
+		MockitoDocumentation.verifySomeBehaviourTimes();
+	}
+	
 }

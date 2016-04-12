@@ -39,4 +39,35 @@ public class MockitoDocumentation extends Mockito{
 		System.out.println(mockedList.get(0));
 	}
 	
+	/**
+	 * 3.参数匹配stubbing
+	 * 按某种参数类型设置桩
+	 */
+	@SuppressWarnings("rawtypes")
+	public static void argumentMatchers(){
+		LinkedList mockedList = mock(LinkedList.class);
+		
+		//设置桩操作，当调用mock的get方法，并且传的值是int型时，都返回字符串：anyInt
+		when(mockedList.get(anyInt())).thenReturn("anyInt");
+		
+		System.out.println(mockedList.get(123));
+		verify(mockedList).get(anyInt());
+	}
+	
+	/**
+	 * 4.验证某个方法调用次数
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public static void verifySomeBehaviourTimes(){
+		LinkedList mockedList = mock(LinkedList.class);
+		
+		//验证加1的操作，是否执行了两次
+		verify(mockedList, times(2)).add("1");
+		//验证加2的操作，是否执行了至少一次
+		verify(mockedList, atLeastOnce()).add("2");
+		//验证加3的操作，是否从未执行
+		verify(mockedList, never()).add("3");
+		
+	}
+	
 }
